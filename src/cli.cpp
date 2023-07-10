@@ -72,7 +72,7 @@ void CLI::show_cli()
 
 // ---------------------------------------------------------------------------------
 
-bool CLI::update_contact_menu()
+void CLI::update_contact_menu()
 {
     while (1)
     {
