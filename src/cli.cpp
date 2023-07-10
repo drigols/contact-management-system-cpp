@@ -58,7 +58,7 @@ void CLI::show_cli()
             this->update_contact_menu();
             break;
         case 6:
-            // rec.deleterec();
+            this->delete_contact_menu();
             break;
         case 7:
             std::cout << "Goodbye, see you later!\n\n";
@@ -76,9 +76,9 @@ void CLI::update_contact_menu()
 {
     while (1)
     {
-        std::cout << "If you wish to modify your name enter one (1) ";
+        std::cout << "If you wish to modify your contact name enter one (1) ";
         std::cout << "\nIf you wish to modify your phone number enter two (2) ";
-        std::cout << "\nIf you wish to back to the menu enter three (3) ";
+        std::cout << "\nIf you wish to back to the main menu enter three (3) ";
         std::cout << "\nEnter your option: ";
         int choice;
         if (!(std::cin >> choice))
@@ -96,6 +96,42 @@ void CLI::update_contact_menu()
             break;
         case 2:
             contact_manager.update_phone_number_by_name();
+            break;
+        case 3:
+            this->show_cli();
+            break;
+        default:
+            std::cout << "\nWARNING: You enter an invalid option... Please, send 1 to 3!\n"
+                      << "\n";
+        }
+    }
+}
+
+// ---------------------------------------------------------------------------------
+
+void CLI::delete_contact_menu()
+{
+    while (1)
+    {
+        std::cout << "If you wish to delete a contact by name enter one (1) ";
+        std::cout << "\nIf you wish to delete a contact by phone number enter two (2) ";
+        std::cout << "\nIf you wish to back to the main menu enter three (3) ";
+        std::cout << "\nEnter your option: ";
+        int choice;
+        if (!(std::cin >> choice))
+        {
+            std::cout << "\nWARNING: Invalid input. Please enter a valid integer (1 to 3).\n\n";
+            std::cin.clear(); // Clear the error state
+            // Discard the remaining invalid input line
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue; // Restart the loop
+        }
+        switch (choice)
+        {
+        case 1:
+            contact_manager.delete_contact_by_name();
+            break;
+        case 2:
             break;
         case 3:
             this->show_cli();

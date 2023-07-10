@@ -16,19 +16,22 @@
 class Contact
 {
 public:
-    // Useful methods.
-    void display_contacts();
-
     // [C]reate methods.
     void add_contact();
 
-    // [R]ead functions.
+    // [R]ead methods.
     bool search_by_phone();
     bool search_by_name();
 
-    // [U]pdate functions.
+    // [U]pdate methods.
     bool update_name();
     bool update_phone_number_by_name();
+
+    // [D]elete methods.
+    bool delete_contact_by_name();
+
+    // Useful methods.
+    void display_contacts();
 };
 
 #endif // CONTACT_H_
