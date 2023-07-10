@@ -14,11 +14,13 @@
 
 #include "contact.h"
 
+// Global variable.
+std::string file_name = "../data/contacts.txt";
+
 // ---------------------------------------------------------------------------------
 
 void Contact::display_contacts()
 {
-    std::string file_name = "../data/contacts.txt";
     std::ifstream file(file_name); // ifstream object.
     std::string current_line;      // Store the current file line.
 
@@ -46,5 +48,34 @@ void Contact::display_contacts()
     else
     {
         std::cout << "Error opening the file: " << file_name << "\n\n";
+    }
+}
+
+// ---------------------------------------------------------------------------------
+
+void Contact::add_contact()
+{
+    std::string userName, phoneNumber;
+
+    std::cout << "Enter your username: ";
+    std::getline(std::cin >> std::ws, userName);
+
+    std::cout << "Enter your Phone number: ";
+    std::getline(std::cin >> std::ws, phoneNumber);
+
+    // ofstream object.
+    std::ofstream outputFile(file_name, std::ios::app);
+
+    if (outputFile.is_open())
+    {
+        outputFile << userName << "," << phoneNumber << "\n";
+        outputFile.close();
+        std::cout << "Contact added successfully!"
+                  << "\n\n";
+    }
+    else
+    {
+        std::cout << "Failed to open the file."
+                  << "\n\n";
     }
 }

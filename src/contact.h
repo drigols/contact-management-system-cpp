@@ -18,6 +18,9 @@ class Contact
 public:
     // Useful methods.
     void display_contacts();
+
+    // Add methods.
+    void add_contact();
 };
 
 #endif // CONTACT_H_

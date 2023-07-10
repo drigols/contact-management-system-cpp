@@ -46,7 +46,7 @@ void CLI::callCLI()
             contact_manager.display_contacts();
             break;
         case 2:
-            // this->add_new_record();
+            contact_manager.add_contact();
             break;
         case 3:
             // this->searchByPhone();
