@@ -15,7 +15,7 @@
 int main()
 {
     CLI mycli;
-    mycli.callCLI();
+    mycli.show_cli();
 
     return 0;
 }
