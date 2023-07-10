@@ -95,6 +95,7 @@ bool CLI::update_contact_menu()
             contact_manager.update_name();
             break;
         case 2:
+            contact_manager.update_phone_number_by_name();
             break;
         case 3:
             this->show_cli();

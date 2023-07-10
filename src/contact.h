@@ -28,7 +28,7 @@ public:
 
     // [U]pdate functions.
     bool update_name();
-    bool modifyPhoneNumberByName();
+    bool update_phone_number_by_name();
 };
 
 #endif // CONTACT_H_
