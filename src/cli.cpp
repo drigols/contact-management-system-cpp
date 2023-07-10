@@ -49,10 +49,10 @@ void CLI::callCLI()
             contact_manager.add_contact();
             break;
         case 3:
-            // this->searchByPhone();
+            contact_manager.search_by_phone();
             break;
         case 4:
-            // this->searchByName();
+            contact_manager.search_by_name();
             break;
         case 5:
             // this->modify();

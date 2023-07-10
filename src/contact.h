@@ -21,6 +21,10 @@ public:
 
     // Add methods.
     void add_contact();
+
+    // Search functions.
+    bool search_by_phone();
+    bool search_by_name();
 };
 
 #endif // CONTACT_H_
