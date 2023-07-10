@@ -17,7 +17,8 @@
 class CLI
 {
 public:
-    void callCLI();
+    void show_cli();
+    bool update_contact_menu();
 };
 
 #endif // CLI_H_

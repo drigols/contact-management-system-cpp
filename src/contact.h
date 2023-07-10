@@ -19,12 +19,16 @@ public:
     // Useful methods.
     void display_contacts();
 
-    // Add methods.
+    // [C]reate methods.
     void add_contact();
 
-    // Search functions.
+    // [R]ead functions.
     bool search_by_phone();
     bool search_by_name();
+
+    // [U]pdate functions.
+    bool update_name();
+    bool modifyPhoneNumberByName();
 };
 
 #endif // CONTACT_H_

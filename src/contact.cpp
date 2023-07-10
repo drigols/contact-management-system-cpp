@@ -271,3 +271,110 @@ bool Contact::search_by_name()
 }
 
 // ---------------------------------------------------------------------------------
+
+bool Contact::update_name()
+{
+    std::fstream file(file_name);
+
+    if (!file)
+    {
+        std::cout << "Error opening the file."
+                  << "\n";
+        return false;
+    }
+
+    std::string searched_name;
+    std::cout << "Enter the complete name to search and modify: ";
+    std::cin.ignore(); // Clear input buffer
+    std::getline(std::cin, searched_name);
+    std::string temp_searched_name = searched_name;
+
+    // Remove special characters and white spaces.
+    temp_searched_name.erase(
+        std::remove_if(
+            temp_searched_name.begin(),
+            temp_searched_name.end(),
+            [](unsigned char c)
+            { return !std::isalnum(c) || c == ' '; }),
+        temp_searched_name.end());
+    // Transform (converts) the passed name to lowercase.
+    std::transform(temp_searched_name.begin(), temp_searched_name.end(), temp_searched_name.begin(), ::tolower);
+
+    std::vector<std::string> lines;
+    std::string current_line;
+    bool found = false;
+
+    while (std::getline(file, current_line))
+    {
+        std::string current_name;                       // Store the name of the current line.
+        std::string current_phone_number;               // Store the phone of the current line.
+        std::size_t comma_pos = current_line.find(','); // Get comma (vírgula posittion).
+
+        // Check if the comma (vírgula) was find() in the current line.
+        if (comma_pos != std::string::npos)
+        {
+            /**
+             * [Extract the current name from the line]
+             * Creates a substring from position zero to comma (vírgula) position.
+             */
+            current_name = current_line.substr(0, comma_pos);
+
+            /**
+             * [Extract the current phone number to the line]
+             * Creates a substring from comma (vírgula) until the end of the line.
+             */
+            current_phone_number = current_line.substr(comma_pos + 1);
+
+            // Remove special characters and white spaces.
+            current_name.erase(
+                std::remove_if(
+                    current_name.begin(),
+                    current_name.end(),
+                    [](unsigned char c)
+                    { return !std::isalnum(c) || c == ' '; }),
+                current_name.end());
+            // Transform (converts) the passed number and the current phone number to lowercase.
+            std::transform(current_name.begin(), current_name.end(), current_name.begin(), ::tolower);
+
+            if (current_name == temp_searched_name)
+            {
+                found = true;
+                std::string new_name;
+                std::cout << "Enter the new name: ";
+                std::getline(std::cin, new_name);
+                current_line = new_name + "," + current_phone_number; // Change the name.
+            }
+        }
+        lines.push_back(current_line);
+    }
+
+    file.close();
+
+    if (!found)
+    {
+        std::cout << "No contact found for the provided name: '" << searched_name << "'\n\n";
+        return true;
+    }
+
+    // Reopen the file in write mode and update the contents.
+    std::ofstream outfile(file_name);
+
+    // Check if the file open.
+    if (!outfile)
+    {
+        std::cout << "Error opening the file for writing."
+                  << "\n";
+        return false;
+    }
+
+    for (const std::string &updated_line : lines)
+    {
+        outfile << updated_line << "\n";
+    }
+
+    outfile.close();
+    std::cout << "Name updated successfully."
+              << "\n\n";
+
+    return true;
+}
