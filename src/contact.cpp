@@ -9,34 +9,42 @@
 //
 **********************************************************************************/
 
+#include <iostream>
+#include <fstream>
+
 #include "contact.h"
 
 // ---------------------------------------------------------------------------------
 
-void Contact::setName(std::string userName)
+void Contact::display_contacts()
 {
-    this->userName = userName;
+    std::string file_name = "../data/contacts.txt";
+    std::ifstream file(file_name); // ifstream object.
+    std::string current_line;      // Store the current file line.
+
+    if (file.is_open())
+    {
+        std::cout << "\nContact list:\n";
+
+        while (std::getline(file, current_line))
+        {
+            std::string current_name;                       // Store the name of the current line.
+            std::string current_phone_number;               // Store the phone of the current line.
+            std::size_t comma_pos = current_line.find(','); // Get comma (vírgula posittion).
+
+            // Check if the comma (vírgula) was find() in the current line.
+            if (comma_pos != std::string::npos)
+            {
+                current_name = current_line.substr(0, comma_pos);
+                current_phone_number = current_line.substr(comma_pos + 1);
+                std::cout << "Username: " << current_name << ", Phone numer: " << current_phone_number << "\n";
+            }
+        }
+        file.close();
+        std::cout << "\n";
+    }
+    else
+    {
+        std::cout << "Error opening the file: " << file_name << "\n\n";
+    }
 }
-
-// ---------------------------------------------------------------------------------
-
-std::string Contact::getName()
-{
-    return this->userName;
-}
-
-// ---------------------------------------------------------------------------------
-
-void Contact::setPhone(std::string phoneNumber)
-{
-    this->phoneNumber = phoneNumber;
-}
-
-// ---------------------------------------------------------------------------------
-
-std::string Contact::getPhone()
-{
-    return this->phoneNumber;
-}
-
-// ---------------------------------------------------------------------------------

@@ -13,11 +13,14 @@
 #include <limits>
 
 #include "cli.h"
+#include "contact.h"
 
 // ---------------------------------------------------------------------------------
 
 void CLI::callCLI()
 {
+    Contact contact_manager;
+
     while (1)
     {
         std::cout << "1) Display all contacts\n";
@@ -40,7 +43,7 @@ void CLI::callCLI()
         switch (choice)
         {
         case 1:
-            // this->display();
+            contact_manager.display_contacts();
             break;
         case 2:
             // this->add_new_record();

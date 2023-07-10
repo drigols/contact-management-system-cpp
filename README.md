@@ -9,7 +9,7 @@
  - [Credits](#credits)
 
 ```bash
-g++ main.cpp cli.cpp -o test.out && ./test.out
+g++ main.cpp cli.cpp contact.cpp -o Contact-Management-System.out && ./Contact-Management-System.out
 ```
 
 ---

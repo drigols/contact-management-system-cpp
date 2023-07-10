@@ -15,18 +15,9 @@
 
 class Contact
 {
-private:
-    // Encapsulation.
-    std::string userName, phoneNumber;
-
 public:
-    // Setters.
-    void setName(std::string userName);
-    void setPhone(std::string phoneNumber);
-
-    // Getters
-    std::string getName();
-    std::string getPhone();
+    // Useful methods.
+    void display_contacts();
 };
 
 #endif // CONTACT_H_
