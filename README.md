@@ -2,11 +2,15 @@
 
 [![MIT License](https://img.shields.io/badge/license-MIT-007EC7.svg?style=flat-square)](LICENSE.md)
 
-> A **Contact Management System** developed in *C++* to help you manage your contact.
+> A **Contact Management System** developed in *C++* to help you manage your contacts.
 
 ## Project Overview
 
  - [Credits](#credits)
+
+```bash
+g++ main.cpp cli.cpp -o test.out && ./test.out
+```
 
 ---
 
