@@ -2,7 +2,7 @@
 // CLI (Source File)
 //
 // Created:     10 July 2023
-// Atualização: 10 July 2023
+// Atualização: 11 July 2023
 // Compiler:    gcc/g++
 //
 // Description: The Contact class provides methods to manage your contacts.
@@ -589,7 +589,8 @@ bool Contact::delete_contact_by_name()
     // Check if the file open.
     if (!outfile)
     {
-        std::cout << "Error opening the file for writing." << "\n\n";
+        std::cout << "Error opening the file for writing."
+                  << "\n\n";
         return false;
     }
 
@@ -601,7 +602,116 @@ bool Contact::delete_contact_by_name()
 
     outfile.close();
 
-    std::cout << "Contact deleted successfully." << "\n\n";
+    std::cout << "Contact deleted successfully."
+              << "\n\n";
+
+    return true;
+}
+
+// ---------------------------------------------------------------------------------
+
+bool Contact::delete_contact_by_phone()
+{
+    std::fstream file(file_name);
+
+    if (!file)
+    {
+        std::cout << "Error opening the file."
+                  << "\n";
+        return false;
+    }
+
+    std::string searched_phone;
+    std::cout << "Enter the phone number to search and delete: ";
+    std::cin.ignore(); // Clear input buffer
+    std::getline(std::cin, searched_phone);
+    std::string temp_searched_phone = searched_phone;
+
+    // Remove special characters and white spaces.
+    temp_searched_phone.erase(
+        std::remove_if(
+            temp_searched_phone.begin(),
+            temp_searched_phone.end(),
+            [](unsigned char c)
+            { return !std::isalnum(c) || c == ' '; }),
+        temp_searched_phone.end());
+
+    std::vector<std::string> lines;
+    std::string current_line;
+    bool found = false;
+
+    while (std::getline(file, current_line))
+    {
+        std::string current_name;                       // Store the name of the current line.
+        std::string current_phone_number;               // Store the phone of the current line.
+        std::size_t comma_pos = current_line.find(','); // Get comma (vírgula posittion).
+
+        // Check if the comma (vírgula) was find() in the current line.
+        if (comma_pos != std::string::npos)
+        {
+            /**
+             * [Extract the current name from the line]
+             * Creates a substring from position zero to comma (vírgula) position.
+             */
+            current_name = current_line.substr(0, comma_pos);
+
+            /**
+             * [Extract the current phone number to the line]
+             * Creates a substring from comma (vírgula) until the end of the line.
+             */
+            current_phone_number = current_line.substr(comma_pos + 1);
+
+            // Remove special characters and white spaces.
+            current_phone_number.erase(
+                std::remove_if(
+                    current_phone_number.begin(),
+                    current_phone_number.end(),
+                    [](unsigned char c)
+                    { return !std::isalnum(c) || c == ' '; }),
+                current_phone_number.end());
+
+            if (current_phone_number == temp_searched_phone)
+            {
+                found = true;
+            }
+            else
+            {
+                // If the line does not match with searched name save it in the Vector.
+                lines.push_back(current_line);
+            }
+        }
+    }
+
+    file.close();
+
+    // If the passed phone number does not match, then stop the method (return false).
+    if (!found)
+    {
+        std::cout << "No contacts found for the provided phone number: '" << searched_phone << "'\n\n";
+        return true;
+    }
+
+    // Reopen the file in write mode and update the contents
+    std::ofstream outfile(file_name);
+
+    // Check if the file open.
+    if (!outfile)
+    {
+        std::cout << "Error opening the file for writing."
+                  << "\n\n";
+        return false;
+    }
+
+    // Overwrite the contact list without the contact to be deleted.
+    for (const std::string &line : lines)
+    {
+        outfile << line << "\n";
+    }
+
+    outfile.close();
+
+    std::cout << "Contact deleted successfully."
+              << "\n\n";
 
     return true;
 }

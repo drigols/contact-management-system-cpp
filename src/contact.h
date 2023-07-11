@@ -2,7 +2,7 @@
 // CLI (Header File)
 //
 // Created:     10 July 2023
-// Atualização: 10 July 2023
+// Atualização: 11 July 2023
 // Compiler:    gcc/g++
 //
 // Description: The Contact class provides methods to manage your contacts.
@@ -29,6 +29,7 @@ public:
 
     // [D]elete methods.
     bool delete_contact_by_name();
+    bool delete_contact_by_phone();
 
     // Useful methods.
     void display_contacts();

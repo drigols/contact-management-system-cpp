@@ -2,7 +2,7 @@
 // CLI (Source File)
 //
 // Created:     10 July 2023
-// Atualização: 10 July 2023
+// Atualização: 11 July 2023
 // Compiler:    gcc/g++
 //
 // Description: The CLI class provides an interface to manage you Contact information.
@@ -132,6 +132,7 @@ void CLI::delete_contact_menu()
             contact_manager.delete_contact_by_name();
             break;
         case 2:
+            contact_manager.delete_contact_by_phone();
             break;
         case 3:
             this->show_cli();
