@@ -23,14 +23,17 @@ void CLI::show_cli()
 {
     while (1)
     {
-        std::cout << "1) Display all contacts\n";
-        std::cout << "2) Add new contact\n";
-        std::cout << "3) Search telephone No.\n";
-        std::cout << "4) Search person name\n";
-        std::cout << "5) Update contact name or telephone No.\n";
-        std::cout << "6) Delete a contact\n";
-        std::cout << "7) Exit\n";
-        std::cout << "Choose your choice: ";
+        std::cout << "\n********************************** ( Contact Management System (C++) ) **********************************\n";
+        std::cout << "*\t\t\t\t\t\t\t\t\t\t\t\t\t*\n";
+        std::cout << "*" << "\t\t1.Display all contacts";
+        std::cout << "\t\t\t2.Add new contact\t\t\t\t*\n*\t\t\t\t\t\t\t\t\t\t\t\t\t*\n";
+        std::cout << "*" << "\t\t3.Search telephone No.";
+        std::cout << "\t\t\t4.Search person name\t\t\t\t*\n*\t\t\t\t\t\t\t\t\t\t\t\t\t*\n";
+        std::cout << "*" << "\t\t5.Update contact";
+        std::cout << "\t\t\t6.Delete contact\t\t\t\t*\n*\t\t\t\t\t\t\t\t\t\t\t\t\t*\n";
+        std::cout << "*" << "\t\t\t\t\t     7.Exit\t\t\t\t\t\t\t*\n*\t\t\t\t\t\t\t\t\t\t\t\t\t*\n";
+        std::cout << "*********************************************************************************************************\n\n";
+        std::cout << "Please, enter an option (1 to 7): ";
         int choice;
         if (!(std::cin >> choice))
         {
