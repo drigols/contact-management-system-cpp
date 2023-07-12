@@ -9,6 +9,20 @@
 //
 ****************************************************************************************/
 
+// Bold (negrito).
+#define RED "\033[1;31m"
+#define YELLOW "\033[1;33m"
+#define MAGENTA "\033[1;35m"
+#define CYAN "\033[1;36m"
+
+// Underlined.
+#define RED_UNDERLINED "\033[4;31m"
+#define GREEN_UNDERLINED "\033[4;32m"
+#define YELLOW_UNDERLINED "\033[4;33m"
+#define BLUE_UNDERLINED "\033[4;34m"
+
+#define RESET "\033[0m" // Used to reset to normal.
+
 #include <iostream>
 #include <limits>
 
@@ -23,21 +37,27 @@ void CLI::show_cli()
 {
     while (1)
     {
-        std::cout << "\n********************************** ( Contact Management System (C++) ) **********************************\n";
+        std::cout << CYAN "\n********************************** ( Contact Management System (C++) ) **********************************\n";
         std::cout << "*\t\t\t\t\t\t\t\t\t\t\t\t\t*\n";
-        std::cout << "*" << "\t\t1.Display all contacts";
-        std::cout << "\t\t\t2.Add new contact\t\t\t\t*\n*\t\t\t\t\t\t\t\t\t\t\t\t\t*\n";
-        std::cout << "*" << "\t\t3.Search telephone No.";
-        std::cout << "\t\t\t4.Search person name\t\t\t\t*\n*\t\t\t\t\t\t\t\t\t\t\t\t\t*\n";
-        std::cout << "*" << "\t\t5.Update contact";
-        std::cout << "\t\t\t6.Delete contact\t\t\t\t*\n*\t\t\t\t\t\t\t\t\t\t\t\t\t*\n";
-        std::cout << "*" << "\t\t\t\t\t     7.Exit\t\t\t\t\t\t\t*\n*\t\t\t\t\t\t\t\t\t\t\t\t\t*\n";
-        std::cout << "*********************************************************************************************************\n\n";
+        std::cout << "*" << GREEN_UNDERLINED "\t\t1. Display all contacts";
+        std::cout << "\t\t\t2. Add new contact" << RESET << CYAN "\t\t\t\t*\n";
+        std::cout << "*\t\t\t\t\t\t\t\t\t\t\t\t\t*\n";
+        std::cout << "*" << YELLOW_UNDERLINED << "\t\t3. Search telephone No.";
+        std::cout << "\t\t\t4. Search person name" << RESET << CYAN << "\t\t\t\t*\n";
+        std::cout << "*\t\t\t\t\t\t\t\t\t\t\t\t\t*\n";
+        std::cout << "*" << BLUE_UNDERLINED << "\t\t5. Update contact";
+        std::cout << "\t\t\t6. Delete contact" << RESET << CYAN "\t\t\t\t*\n";
+        std::cout << "*\t\t\t\t\t\t\t\t\t\t\t\t\t*\n";
+        std::cout << "*\t\t\t\t\t     " << RED_UNDERLINED << "7. Exit" << RESET << CYAN "\t\t\t\t\t\t\t*\n";
+        std::cout << "*\t\t\t\t\t\t\t\t\t\t\t\t\t*\n";
+        std::cout << "*********************************************************************************************************\n\n"
+                  << RESET;
         std::cout << "Please, enter an option (1 to 7): ";
         int choice;
         if (!(std::cin >> choice))
         {
-            std::cout << "\nWARNING: Invalid input. Please enter a valid integer (1 to 7).\n\n";
+            std::cout << RED "\nWARNING: Invalid input. Please enter a valid integer (1 to 7).\n\n"
+                      << RESET;
             std::cin.clear(); // Clear the error state
             // Discard the remaining invalid input line
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -64,11 +84,12 @@ void CLI::show_cli()
             this->delete_contact_menu();
             break;
         case 7:
-            std::cout << "Goodbye, see you later!\n\n";
+            std::cout << MAGENTA "Goodbye, see you later!\n\n"
+                      << RESET;
             exit(1);
         default:
-            std::cout << "\nWARNING: You enter an invalid option... Please, send 1 to 7!\n"
-                      << "\n";
+            std::cout << RED "\nWARNING: You enter an invalid option... Please, send 1 to 7!\n\n"
+                      << RESET;
         }
     }
 }
@@ -86,7 +107,8 @@ void CLI::update_contact_menu()
         int choice;
         if (!(std::cin >> choice))
         {
-            std::cout << "\nWARNING: Invalid input. Please enter a valid integer (1 to 3).\n\n";
+            std::cout << RED "\nWARNING: Invalid input. Please enter a valid integer (1 to 7).\n\n"
+                      << RESET;
             std::cin.clear(); // Clear the error state
             // Discard the remaining invalid input line
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -104,8 +126,8 @@ void CLI::update_contact_menu()
             this->show_cli();
             break;
         default:
-            std::cout << "\nWARNING: You enter an invalid option... Please, send 1 to 3!\n"
-                      << "\n";
+            std::cout << RED "\nWARNING: You enter an invalid option... Please, send 1 to 7!\n\n"
+                      << RESET;
         }
     }
 }
@@ -123,7 +145,8 @@ void CLI::delete_contact_menu()
         int choice;
         if (!(std::cin >> choice))
         {
-            std::cout << "\nWARNING: Invalid input. Please enter a valid integer (1 to 3).\n\n";
+            std::cout << RED "\nWARNING: Invalid input. Please enter a valid integer (1 to 7).\n\n"
+                      << RESET;
             std::cin.clear(); // Clear the error state
             // Discard the remaining invalid input line
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -141,8 +164,8 @@ void CLI::delete_contact_menu()
             this->show_cli();
             break;
         default:
-            std::cout << "\nWARNING: You enter an invalid option... Please, send 1 to 3!\n"
-                      << "\n";
+            std::cout << RED "\nWARNING: You enter an invalid option... Please, send 1 to 7!\n\n"
+                      << RESET;
         }
     }
 }
