@@ -145,10 +145,6 @@ bool Contact::search_by_phone()
                 { return !std::isalnum(c) || c == ' '; }),
             current_phone_number.end());
 
-        // Transform (converts) the passed number and the current phone number to lowercase.
-        std::transform(temp_searched_number.begin(), temp_searched_number.end(), temp_searched_number.begin(), ::tolower);
-        std::transform(current_phone_number.begin(), current_phone_number.end(), current_phone_number.begin(), ::tolower);
-
         // Check if the searched number is equal to the current phone number.
         if (temp_searched_number == current_phone_number)
         {
