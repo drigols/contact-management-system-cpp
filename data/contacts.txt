@@ -3,10 +3,12 @@ Jailson Homeoffice,[83]123456789
 Elon Musk House,"83" 12345678
 Maria da Glória Leite Pereira,83 99650112
 Maria Madalena Novo,5464659855
+Jack Brown House,07901234567
 Jailson House,83 123456789
 Elon Musk Tesla,(83)   12345678
 Simone Pereira,83 96502266
 Eduardo do Gás,83 55889964
+Rhafael Mayar House,83 65214780
 Jailson Loja,83123456789
 Elon Musk Twitter,83 12345678
 Jelyane Leite Praxedes,55 83 996554879
@@ -15,3 +17,34 @@ Elon Musk SpaceX,8312345678
 Rodrigo Loja,8396500112
 Elon Musk,[83] 12345678
 Jailson,(83) 123456789
+Rhafael Mayar, 8365214780
+Bill Gates, [83]65498732
+John Smith,(123) 456-7890
+Vitória Oliveira Sitio,83977774444
+Jennifer Lee House,2345678901
+Tiago Mendes Casa,83944443333
+Marcela Almeida,[83] 93333-4444
+Jessica Jones [AP],(456) 789-0123
+Alexander Martinez House,6045553456
+William Brown,(567) 890-1234
+Henrique Sousa, "83" 96666-4444
+Emma Thomas,(416) 555-9012
+Benjamin Scott,(905) 555-6789
+Daniel Johnson,(604) 555-5678
+Thomas Green,07933567890
+Fernanda Rodrigues,83 97777-5555
+Jack Brown,07901234567
+George Clarke,07723678901
+Carlos Souza,[83] 91111-2222
+Tiago Mendes,"83" 94444-3333
+Jennifer Lee,(234) 567-8901
+Alexander Martinez,(604) 555-3456
+Jessica Jones,(456) 789-0123
+Ana Oliveira,(83)987654321
+Vitória Oliveira,"83" 97777-4444
+Lucas Martins,55 83 922223333
+Paulo Castro,83 95555-6666
+Sophia Adams,(890) 123-4567
+Gabriel Pereira,[83]933331111
+John Smith Office,123 4567890
+Juliana Silva,83 944447777
