@@ -60,12 +60,12 @@ void Contact::display_contacts()
 
 void Contact::add_contact()
 {
-    std::string userName, phoneNumber;
+    std::string contactName, phoneNumber;
 
-    std::cout << "Enter your username: ";
-    std::getline(std::cin >> std::ws, userName);
+    std::cout << "Enter the contact name: ";
+    std::getline(std::cin >> std::ws, contactName);
 
-    std::cout << "Enter your Phone number: ";
+    std::cout << "Enter the phone number: ";
     std::getline(std::cin >> std::ws, phoneNumber);
 
     // ofstream object.
@@ -73,7 +73,7 @@ void Contact::add_contact()
 
     if (outputFile.is_open())
     {
-        outputFile << userName << "," << phoneNumber << "\n";
+        outputFile << contactName << "," << phoneNumber << "\n";
         outputFile.close();
         std::cout << "Contact added successfully!"
                   << "\n\n";
